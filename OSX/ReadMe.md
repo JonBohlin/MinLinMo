@@ -1,6 +1,6 @@
-If the GNU Scientific Library is not installed you will need the following libraries:
+If the GNU Scientific Library is not installed you will need the following libraries and a path pointing to them:
 
-libgsl.so.27 libgslcblas.so.0 (could be a soft link to libgslcblas.so.0.0.0)
+libgsl.27.dylib libgslcblas.0.dylib
 
 Compile MinLinMo for OS X with Apple silicon using (-I and -L point to GSL include and library files respectively):
 
