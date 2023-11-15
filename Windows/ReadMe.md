@@ -16,6 +16,10 @@ GSL can now be installed with vcpkg:
 .\vcpkg install gsl gsl:x64-windows
 
 Make a new C++ console project in Visual Studio and include the MinLinMo.cpp and MinLinMo.hpp files in the project and compile.
-These instructions were first encountered here:
 
+These instructions were first encountered here:
 https://solarianprogrammer.com/2020/01/26/getting-started-gsl-gnu-scientific-library-windows-macos-linux/#gsl_installation_windows
+
+After compilation, to run the executable file make sure gsl.dll and gslcblas.dll are in the same directory.
+
+
