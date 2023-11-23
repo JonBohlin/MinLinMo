@@ -22,4 +22,4 @@ https://solarianprogrammer.com/2020/01/26/getting-started-gsl-gnu-scientific-lib
 
 After compilation, or to run the included executable file (GSL does not need to be installed), make sure gsl.dll and gslcblas.dll are in the same directory.
 
-
+See also:https://zenodo.org/records/10149465
