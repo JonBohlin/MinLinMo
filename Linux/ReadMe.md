@@ -18,4 +18,4 @@ MinLinMo can now be compiled for Linux with:
 
 _g++ MinLinMo.cpp -march=core-avx2 -lgsl -lblas -lpthread -O3 -o MinLinMo_
 
-**Compiling MinLinMo for Linux on ARM based CPUs (Raspberry Pi, for instance) see separate ARM directory.**
+**For compiling MinLinMo on Ubuntu-type Linux for ARM based CPUs (Raspberry Pi, for instance) see separate ARM directory.**
