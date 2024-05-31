@@ -1,12 +1,11 @@
 # MinLinMo
-Fast and efficient *n<<p* variable selection for linear models
+Fast and efficient *n<<p* parsimonious linear model prediction and variable selection
 
 ## Compiling and installing MinLinMo
 MinLinMo was written in C++ version 14. It has been developed for both Intel and ARM
 processors. For Intel processors, both multi-threading and AVX2 are employed for maximum
 performance. For ARM processors, NEON is used instead of AVX2. As AVX2 supports 256 bit registers (NEON currently only supports 128 bit), parts
-of MinLinMo will likely run faster on Intel processors. During the model building phase, which is
-also the most time consuming phase, multi-threading did not improve performance.
+of MinLinMo will likely run faster on Intel processors.
 
 **More detailed instructions for compiling MinLinMo on a specific platform can be found in the corresponding directory above.**
 
@@ -53,64 +52,76 @@ MinLinMo default settings are: predictors must correlate 0.1 with the outcome, t
 To test MinLinMo on a dataset, first download the included _mtcars_ dataset (from the R package _data(mtcars)_). That is, the files _mpg.txt_ (outcome) and _mtcars.csv_ (predictors). For Linux and OS X, run MinLinMo from a path to the directory it was installed in or in the current directory:
 
  ```
-~$ ./MinLinMo mpg.txt mtcars.csv
-=============================
-Simple variable selector v1.0
-=============================
-Number of arguments:3
+~$ ./MinLinMo -y mpg.txt -X mtcars.csv
+=============
+MinLinMo v1.1
+=============
+
 Outcome vector filename entered:mpg.txt
 Matrix filename entered:mtcars.csv
 Correlation entered:0.1
 Delta Rsq entered:0.01
 Residual correlation entered:0.1
+Results output file entered:
+
 Loaded outcome:
 Number of rows:32
 Loaded matrix data:
 Number of rows:32	Number of columns:10
+
 Calculating correlation matrix
-Time taken (sec/millisec):0.00213961
+Time taken (sec/millisec):0.00236631
+
 Number of predictors correlating with outcome:10
+
 Computing model...
 39.6863 intercept
 -3.19097 wt
 -1.50779 cyl
+
 Final model R2:0.818519
+
 Number of predictors:2
-Time taken (sec/millisec):0.000248568
+Time taken (sec/millisec):0.000253318
 ```
 
  For Windows, the _.dll_ files must be in the same directory as the _MinLinMo.exe_ file. MinLinMo can then be run with a path to the directory it was installed, or in the current by typing:
 
- ```MinLinMo.exe mpg.txt mtcars.csv```
+ ```MinLinMo.exe -y mpg.txt -X mtcars.csv```
 
  To adjust only the parameter for Pearson correlation between predictors and outcome type:
 
- ```./MinLinMo mpg.txt mtcars.csv 0.1```
+ ```./MinLinMo -y mpg.txt -X mtcars.csv -r1 0.2```
 
- To also adjust R<sup>2</sup> to 0.1% variance explaned increase:
+ To also adjust R<sup>2</sup> to 0.1% variance explaned increase (arguments can be entered in any order):
 
- ```./MinLinMo mpg.txt mtcars.csv 0.2 0.001```
+ ```./MinLinMo -y mpg.txt -X mtcars.csv -r1 0.2 -R2 0.001```
 
  The residual correlation can be adjusted as well:
 
  ```
- ./MinLinMo mpg.txt mtcars.csv 0.2 0.001 0.5
-=============================
-Simple variable selector v1.0
-=============================
-Number of arguments:6
+ ./MinLinMo -y mpg.txt -X mtcars.csv -R2 0.001 -r1 0.2 -r2 0.5
+=============
+MinLinMo v1.1
+=============
+
 Outcome vector filename entered:mpg.txt
 Matrix filename entered:mtcars.csv
 Correlation entered:0.2
 Delta Rsq entered:0.001
 Residual correlation entered:0.5
+Results output file entered:
+
 Loaded outcome:
 Number of rows:32
 Loaded matrix data:
 Number of rows:32	Number of columns:10
+
 Calculating correlation matrix
-Time taken (sec/millisec):0.00214258
+Time taken (sec/millisec):0.0023186
+
 Number of predictors correlating with outcome:10
+
 Computing model...
 19.7462 intercept
 -5.04798 wt
@@ -119,7 +130,7 @@ Computing model...
 Final model R2:0.814445
 
 Number of predictors:2
-Time taken (sec/millisec):0.000223395
+Time taken (sec/millisec):0.000202114
 ```
 
 ## Preparing datasets for MinLinMo ##
@@ -164,66 +175,78 @@ fwrite(outc, file="Outcome.csv", quote=F)
 Testing the dataset with MinLinMo:
 
 ```
-$ ./MinLinMo Outcome.csv random_matrix.csv 
-=============================
-Simple variable selector v1.0
-=============================
-Number of arguments:3
+$ ./MinLinMo -X random_matrix.csv -y Outcome.csv
+=============
+MinLinMo v1.1
+=============
+
 Outcome vector filename entered:Outcome.csv
 Matrix filename entered:random_matrix.csv
 Correlation entered:0.1
 Delta Rsq entered:0.01
 Residual correlation entered:0.1
+Results output file entered:
+
 Loaded outcome:
 Number of rows:1000
 Loaded matrix data:
 Number of rows:1000	Number of columns:50000
-Calculating correlation matrix
-Time taken (sec/millisec):0.036771
-Number of predictors correlating with outcome:74
-Computing model...
--0.0281351 intercept
--0.0966533 V49059
-0.099808 V23010
-0.123745 V19734
--0.0958096 V28082
--0.120931 V47759
-0.122009 V42874
-0.115737 V18680
-0.129641 V16339
-0.100093 V494
-0.128163 V16052
--0.099705 V23107
-0.105727 V15277
--0.0890509 V23105
-0.106072 V25399
--0.106206 V21016
-0.109707 V19123
-0.122541 V26187
-0.104949 V17961
 
-Final model R2:0.218852
+Calculating correlation matrix
+Time taken (sec/millisec):0.0191996
+
+Number of predictors correlating with outcome:77
+
+Computing model...
+0.0868993 intercept
+-0.13546 pred45280
+-0.124483 pred13435
+-0.134407 pred49102
+0.115218 pred27118
+-0.105008 pred47945
+0.140665 pred39620
+-0.124017 pred28511
+0.130638 pred26552
+-0.121924 pred35582
+-0.104419 pred8513
+0.127235 pred2861
+0.101712 pred21432
+-0.12103 pred40769
+-0.131358 pred40114
+-0.100651 pred2158
+-0.122407 pred49114
+-0.106551 pred44148
+0.109222 pred4954
+
+Final model R2:0.246912
 
 Number of predictors:18
-Time taken (sec/millisec):0.152509
+Time taken (sec/millisec):0.145012
 ```
 
 ## Prediction with a MinLinMo trained model ##
 
-MinLinMo's selected variables can either be employed in a separate analysis or they can be used, together with the estimated coefficients, to predict the outcome on a test dataset. To do the latter, make a _.txt_ file with the coefficients and their corresponding variables by copying them from the screen and pasting them into a text editor. Then add columns titles, such as _est_ and _id_ (space separated), as seen below:
-
+MinLinMo's selected variables can either be employed in a separate analysis or they can be used, together with the estimated coefficients, to predict the outcome on a test dataset. To do the latter, add the argument -O and a text file name:
 ```
+$ ./MinLinMo -X random_matrix.csv -O ests.txt -y Outcome.csv
+.
+.
+
+$ cat ests.txt
 est id
--0.0281351 intercept
--0.0966533 V49059
-0.099808 V23010
-0.123745 V19734
--0.0958096 V28082
--0.120931 V47759
-0.122009 V42874
-
+0.0868993 intercept
+-0.13546 pred45280
+-0.124483 pred13435
+-0.134407 pred49102
+0.115218 pred27118
+-0.105008 pred47945
+0.140665 pred39620
+-0.124017 pred28511
+0.130638 pred26552
+.
+.
 ```
-Save the estimates and call the text file _ests.txt_. Prediction is likely easier in R, so start by loading the MinLinMo estimates:
+Prediction is likely easier in R, so start by loading the MinLinMo estimates:
 
 ```
 ests <- read.table("ests.txt", header=T, sep=" ")
