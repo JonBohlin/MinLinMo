@@ -1,6 +1,6 @@
 # MinLinMo ARM-Linux (Raspberry pi)
 
-To compile MinLinMo on an ARM processor with Ubuntu-type Linux, make sure the GSL library is installed:
+To compile MinLinMo on an ARM processor with Raspbian or Ubuntu-type Linux, make sure the GSL library is installed:
 
 _sudo apt install libgsl-dev_
 
