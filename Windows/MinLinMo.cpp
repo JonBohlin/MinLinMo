@@ -16,10 +16,6 @@
 #include "MinLinMo.hpp"
 #include "VariableSelector.hpp"
 
-// Compile with:
-
-// g++ MinLinMo.cpp -lpthread -std=c++17  -O3 -lgsl -lblas -I /opt/homebrew/Cellar/gsl/2.7.1/include/ -L /opt/homebrew/Cellar/gsl/2.7.1/lib/ -march=armv8-a -o MinLinMo
-
 // Main MinLinMo class
 
 int main(int argv, char* args[]){
