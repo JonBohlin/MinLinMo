@@ -5,7 +5,7 @@
 #include <sstream>
 #include <algorithm>
 #include <cmath>
-#include <arm_neon.h>
+#include <immintrin.h>
 #include <thread>
 #include <chrono>
 #include <mutex>
