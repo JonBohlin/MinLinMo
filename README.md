@@ -1,6 +1,8 @@
 # MinLinMo
 Fast and efficient *n<<p* parsimonious linear model prediction and variable selection
 
+MinLinMo is a linear model variable selector/regressor that emphesizes parsimonious prediction models over superior accuracy. It also focuses on including variables that directly correlate with the outcome and allows the user to set the minimum % of variance explaned improvment for a variable to be included in the final prediction model. Thus, MinLinMo gives the user more control of the predictors selected with only negligible loss in accuracy.
+
 ## Compiling and installing MinLinMo
 MinLinMo was written in C++ version 14. It has been developed for both Intel and ARM
 processors. For Intel processors, both multi-threading and AVX2 are employed for maximum
