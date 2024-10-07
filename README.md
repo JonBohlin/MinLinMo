@@ -11,7 +11,6 @@ MinLinMo is a linear model variable selector/regressor that emphesizes parsimoni
 
 
 ## Compiling and installing MinLinMo
-#compiling-and-installing-minlinmo
 MinLinMo was written in C++ version 14. It has been developed for both Intel and ARM
 processors. For Intel processors, both multi-threading and AVX2 are employed for maximum
 performance. For ARM processors, NEON is used instead of AVX2. As AVX2 supports 256 bit registers (NEON currently only supports 128 bit), parts
@@ -54,10 +53,11 @@ as follows:
 - Click the Browser tab and search with the keywords “Microsoft.gsl”, which will filter out the Microsoft GSL version. It can now be installed by clicking the install button
 
 MinLinMo can now be compiled with the Microsoft C++ compiler from Visual Studio, see Windows section for full details.
-<a href="#intro">Intro</a>
-#testing-minlinmo
+
+Back to [Table of contents](#table-of-contents)
+
+
 ## Testing MinLinMo
-#testing-minlinmo
 
 MinLinMo default settings are: predictors must correlate 0.1 with the outcome, the linear model must improve with at least 1% (R<sup>2 </sup>) variance explaned and an added predictor must correlate 0.1 with current model residuals to be considered in the linear model. 
 
@@ -144,6 +144,9 @@ Final model R2:0.814445
 Number of predictors:2
 Time taken (sec/millisec):0.000202114
 ```
+
+Back to [Table of contents](#table-of-contents)
+
 
 ## Preparing datasets for MinLinMo
 
@@ -236,6 +239,9 @@ Number of predictors:18
 Time taken (sec/millisec):0.145012
 ```
 
+Back to [Table of contents](#table-of-contents)
+
+
 ## Prediction with a MinLinMo trained model ##
 
 MinLinMo's selected variables can either be employed in a separate analysis or they can be used, together with the estimated coefficients, to predict the outcome on a test dataset. To do the latter, add the argument -O and a text file name:
@@ -277,3 +283,5 @@ The outcome can now be predicted as follows:
 pred <- cbind( 1, as.matrix( mldat[,ests$id[-1]] ) ) %*% ests$est
 ```
 The variable _pred_ should now contain a vector of the predicted values that can be compared to the given values if present.
+
+Back to [Table of contents](#table-of-contents)
