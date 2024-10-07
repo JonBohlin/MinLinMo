@@ -3,7 +3,15 @@ Fast and efficient *n<<p* parsimonious linear model prediction and variable sele
 
 MinLinMo is a linear model variable selector/regressor that emphesizes parsimonious prediction models over superior accuracy. It also focuses on including variables that directly correlate with the outcome and allows the user to set the minimum % of variance explaned improvment for a variable to be included in the final prediction model. Thus, MinLinMo gives the user more control of the predictors selected with only negligible loss in accuracy.
 
+## Table of Contents
+- [Compiling and installing MinLinMo](#compiling-and-installing-minlinmo)
+- [Testing MinLinMo](#testing-minlinmo)
+- [Preparing datasets for MinLinMo](#preparing-datasets-for-minlinmo)
+- [Prediction with a MinLinMo trained model](#prediction-with-a-minlinmo-trained-model)
+
+
 ## Compiling and installing MinLinMo
+#compiling-and-installing-minlinmo
 MinLinMo was written in C++ version 14. It has been developed for both Intel and ARM
 processors. For Intel processors, both multi-threading and AVX2 are employed for maximum
 performance. For ARM processors, NEON is used instead of AVX2. As AVX2 supports 256 bit registers (NEON currently only supports 128 bit), parts
@@ -46,8 +54,10 @@ as follows:
 - Click the Browser tab and search with the keywords “Microsoft.gsl”, which will filter out the Microsoft GSL version. It can now be installed by clicking the install button
 
 MinLinMo can now be compiled with the Microsoft C++ compiler from Visual Studio, see Windows section for full details.
-
-## Testing MinLinMo ##
+<a href="#intro">Intro</a>
+#testing-minlinmo
+## Testing MinLinMo
+#testing-minlinmo
 
 MinLinMo default settings are: predictors must correlate 0.1 with the outcome, the linear model must improve with at least 1% (R<sup>2 </sup>) variance explaned and an added predictor must correlate 0.1 with current model residuals to be considered in the linear model. 
 
@@ -135,7 +145,7 @@ Number of predictors:2
 Time taken (sec/millisec):0.000202114
 ```
 
-## Preparing datasets for MinLinMo ##
+## Preparing datasets for MinLinMo
 
 To analyse datasets, MinLinMo will require a file with the outcome which is just a list of numbers with a title on top. In addition, MinLinMo will require a comma-separated (_.csv_-type file) prediction matrix with column names and without rownames.
 
