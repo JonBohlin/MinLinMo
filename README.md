@@ -1,7 +1,7 @@
 # MinLinMo
 Fast and efficient *n<<p* parsimonious linear model prediction and variable selection
 
-MinLinMo is a linear model variable selector/regressor that emphesizes parsimonious prediction models over superior accuracy. It also focuses on including variables that directly correlate with the outcome and allows the user to set the minimum % of variance explaned improvment for a variable to be included in the final prediction model. Thus, MinLinMo gives the user more control of the predictors selected with only negligible loss in accuracy.
+MinLinMo is a stand-alone linear model variable selector/regressor for Windows, OS X and Linux that emphasizes parsimonious prediction models over superior accuracy. It also focuses on including variables that directly correlate with the outcome and allows the user to set the minimum % of variance explained improvement for a variable to be included in the final prediction model. Thus, MinLinMo gives the user more control of the predictors selected with only negligible loss in accuracy.
 
 ## Table of Contents
 - [Compiling and installing MinLinMo](#compiling-and-installing-minlinmo)
@@ -59,7 +59,7 @@ Back to [Table of contents](#table-of-contents)
 
 ## Testing MinLinMo
 
-MinLinMo default settings are: predictors must correlate 0.1 with the outcome, the linear model must improve with at least 1% (R<sup>2 </sup>) variance explaned and an added predictor must correlate 0.1 with current model residuals to be considered in the linear model. 
+MinLinMo default settings are: predictors must correlate 0.1 with the outcome, the linear model must improve with at least 1% (R<sup>2 </sup>) variance explained and an added predictor must correlate 0.1 with current model residuals to be considered in the linear model. 
 
 To test MinLinMo on a dataset, first download the included _mtcars_ dataset (from the R package _data(mtcars)_). That is, the files _mpg.txt_ (outcome) and _mtcars.csv_ (predictors). For Linux and OS X, run MinLinMo from a path to the directory it was installed in or in the current directory:
 
@@ -150,7 +150,7 @@ Back to [Table of contents](#table-of-contents)
 
 ## Preparing datasets for MinLinMo
 
-To analyse datasets, MinLinMo will require a file with the outcome which is just a list of numbers with a title on top. In addition, MinLinMo will require a comma-separated (_.csv_-type file) prediction matrix with column names and without rownames.
+To analyse datasets, MinLinMo will require a file with the outcome which is just a list of numbers with a title on top. In addition, MinLinMo will require a comma-separated (_.csv_-type file) prediction matrix with column names and without row names.
 
 Here is an example of a random dataset consisting of 50,000 columns and 1,000 rows created with **Python** and the **Pandas** library:
 ```
