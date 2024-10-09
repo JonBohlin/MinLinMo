@@ -54,6 +54,28 @@ as follows:
 
 MinLinMo can now be compiled with the Microsoft C++ compiler from Visual Studio, see Windows section for full details.
 
+To see if MinLinMo works and get an overview of its command line arguments, navigate to the installation directory and type:
+
+
+ ```
+~$ ./MinLinMo -h 
+=============
+MinLinMo v1.1
+=============
+
+Created by Jon Bohlin, June 2024
+
+List of MinLinMo arguments:
+---------------------------
+
+-h	Overview of possible command line arguments
+-X	<filename> filename to prediction matrix in .csv format - required
+-y	<filename> filename to outcome vector in .csv format - required
+-O	<filename> filename for tab-separated prediction results - optional
+-R2	<float> (0.01) required model improvement for variable selection - optional
+-r1	<float> (0.1) Pearson correlation threshold for admission to priority queue - optional
+-r2	<float> (0.1) residual Pearson correlation threshold for model inclusion - optional
+```
 Back to [Table of contents](#table-of-contents)
 
 
